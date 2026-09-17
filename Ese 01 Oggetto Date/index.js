@@ -39,5 +39,26 @@ function leggiDataDalTagInput(){
     log.innerHTML += data2 + "<br><br>"
 
     //kobe's ISO
+    log.innerHTML += data1.toISOString() + "<br>"
+    log.innerHTML += data2.toISOString() + "<br><br>"
+
+    //locale date
+    log.innerHTML += data1.toLocaleString() + "<br>"
+    log.innerHTML += data2.toLocaleString() + "<br><br>"
     
+    //get time
+    log.innerHTML += data1.getTime() + "<br>"
+    log.innerHTML += data2.getTime() + "<br><br>"
+
+    //differenza tra le date in milliseconds
+    let dif = data2-data1
+    log.innerHTML += dif + "<br><br>"
+
+    //portiamo in giorni minuti e secondi
+    let seconds = dif/1000
+    let minuts = Math.floor(seconds/60)
+    let ors = Math.floor(minuts/60)
+    let difmin = seconds%60
+    let diffsec = dif%1000
+    log.innerHTML += ors+"h "+difmin+"m "+diffsec+"s"+"<br><br>"
 }
