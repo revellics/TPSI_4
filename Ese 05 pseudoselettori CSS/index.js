@@ -26,7 +26,6 @@ window.onload = function() {
 			// 3 - i-esimo elemento generico, ma solo se di tipo P			
 			if (this.matches(`p:nth-child(${i})`))
 				visualizza(`p:nth-child(${i})`);
-
 			// 4 - i-esimo elemento del suo tipo			
 			if (this.matches(`:nth-of-type(${i})`))
 				visualizza(`nth-of-type(${i})`);
@@ -42,7 +41,4 @@ window.onload = function() {
 	function visualizza(msg) {
 		txtRis.innerHTML = txtRis.innerHTML + msg + "<br>"
 	}
-	
-	
-
 }
