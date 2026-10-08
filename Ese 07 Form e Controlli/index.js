@@ -5,6 +5,7 @@ const txt1 = form1.querySelector("input[type=text]")
 const lst1 = form1.getElementsByTagName("select")[0]
 const chks = form1.querySelectorAll("input[type=checkbox]")
 const lst2 = form1.getElementsByTagName("select")[1]
+const opts = form1.querySelector("input[type=radio]")
 
 // richiamato dall'html
 function visualizza(index) {
@@ -64,7 +65,6 @@ function visualizza(index) {
 	alert(msg);
 }
 
-
 function imposta(index){
 	let valuta	
 	switch(index){
@@ -77,10 +77,34 @@ function imposta(index){
 			lst1.value = valuta
 			break;
 		case 3:
+			valuta = prompt("Inserisci il value del checkbox da selezionares ")
+			for (const item of chks) {
+				const lbltxt = item.parentElement.textContent.trim().toLowerCase()
+				if (item.value.toLowerCase() == valuta.toLowerCase() || lbltxt == valuta.toLowerCase()) {
+					item.checked = true
+					break;
+				}
+			}
 			break;
 		case 4:
+			valuta = prompt("Inserisci il value del radioButton da selezionares ")
+			for (const item of opts) {
+				const lbltxt = item.parentElement.textContent.trim().toLowerCase()
+				if (item.value.toLowerCase() == valuta.toLowerCase() || lbltxt == valuta.toLowerCase()) {
+					item.checked = true
+					break;
+				}
+			}
 			break;
 		case 5:
+			valuta = prompt("Inserisci l'indice che vuoi selezionare")
+			for (const item of lst2.options) {
+				const txt = item.textContent.trim().toLowerCase()
+				if (item.value.toLowerCase() == valuta || txt == valuta) {
+					item.selected = true
+					break;
+				}
+			}
 			break;
 	}	 
 }
