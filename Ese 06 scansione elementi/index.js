@@ -49,7 +49,7 @@ function SfondoVerdeOddCrescente(){
     let vet = Array.from(document.querySelectorAll('#wrapper li'))
     let luminosità = 50
     for (const item of vet) {
-        if(item.matches(":nth-child(odd)")){
+        if(item.matches(":nth-of-type(odd)")){
             item.style.backgroundColor = `rgb(0, ${luminosità}, 0)`
             luminosità += 50
         }

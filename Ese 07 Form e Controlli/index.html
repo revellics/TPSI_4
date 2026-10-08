@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-  
 <html>
 <head lang="it">
     <meta charset="UTF-8">
@@ -36,16 +35,16 @@
 	<fieldset style="width:300px">
 		<legend>Campi Checkbox</legend>
 		<label> 
-			<input type="checkbox" name="chk" value="opzione 1" /> 
+			<input type="checkbox" name="chk" value="opzione 1" data-index="1"/> 
 			check-1 
 		</label>
 		<label> 
-			<input type="checkbox" name="chk" /> 
+			<input type="checkbox" name="chk"  data-index="2"/>
 			check-2 
 		</label>
-		<label> 
-			<input type="checkbox" name="chk" value="opzione 3" /> 
-			check-3 
+		<label>
+			<input type="checkbox" name="chk" value="opzione 3" data-index="3"/>
+			check-3
 		</label>
 	</fieldset>
 	<br/>
@@ -53,9 +52,9 @@
 	<!-- Radio Button -->
 	<fieldset style="width:300px">
 		<legend>Campi Radio</legend>
-		<label> <input type="radio" name="opt" value="si" /> si </label>
-		<label> <input type="radio" name="opt" value="no" /> no </label>
-		<label> <input type="radio" name="opt" value="forse" /> forse </label>
+		<label> <input type="radio" name="opt" value="si"  data-index="1"/> si </label>
+		<label> <input type="radio" name="opt" value="no"  data-index="2"/> no </label>
+		<label> <input type="radio" name="opt" value="forse"  data-index="3"/> forse </label>
 	</fieldset>
 	<br/> 
 
@@ -74,7 +73,7 @@
 <br/> <br/>
 
 <div> SEZ1: Leggi il VALUE dei controlli :</div>
-<p><a href="javascript:visualizza(1);"> Campo di testo</a></p>
+<p><a href="#" onclick="visualizza(1);"> Campo di testo</a></p>
 <p><a href="javascript:visualizza(2);"> Voce selezionata nel ListBox</a></p>
 <p><a href="javascript:visualizza(3);"> Elenco di tutti i checkbox (name e value)</a></p>
 <p><a href="javascript:visualizza(4);"> Elenco check box selezionati (value)</a></p>
