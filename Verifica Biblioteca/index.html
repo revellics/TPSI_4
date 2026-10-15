@@ -22,17 +22,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Dettagli</h5>
-					<!-- data-bs-dismiss fa sì che il button chiuda la modale -->
+                    <!-- data-bs-dismiss fa sì che il button chiuda la modale -->
                     <button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="card shadow p-3">
 
-					</div>
+                    </div>
                 </div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Chiudi</button>
-				</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Chiudi</button>
+                </div>
             </div>
         </div>
     </div>
@@ -43,81 +43,81 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add New Book</h5>
-					<!-- data-bs-dismiss fa sì che il button chiuda la modale -->
+                    <!-- data-bs-dismiss fa sì che il button chiuda la modale -->
                     <button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="card shadow p-3">
-						<div> <!-- contenitore dei dettagli -->   
-							<div class="row mb-2">
-							  <div class="col-4 fw-bold text-end">Id</div>
-							  <div class="col-8"><input type="text" class="form-control"></div>
-							</div>
+                        <div> <!-- contenitore dei dettagli -->  
+                            <div class="row mb-2">
+                              <div class="col-4 fw-bold text-end">Id</div>
+                              <div class="col-8"><input type="text" class="form-control"></div>
+                            </div>
 
-							<div class="row mb-2">
-							  <div class="col-4 fw-bold text-end">Titolo</div>
-							  <div class="col-8"><input type="text" class="form-control"></div>
-							</div>
+                            <div class="row mb-2">
+                              <div class="col-4 fw-bold text-end">Titolo</div>
+                              <div class="col-8"><input type="text" class="form-control"></div>
+                            </div>
 
-							<div class="row mb-2">
-							  <div class="col-4 fw-bold text-end">Autore</div>
-							  <div class="col-8"><input type="text" class="form-control"></div>
-							</div>
+                            <div class="row mb-2">
+                              <div class="col-4 fw-bold text-end">Autore</div>
+                              <div class="col-8"><input type="text" class="form-control"></div>
+                            </div>
 
-							<div class="row mb-2">
-							  <div class="col-4 fw-bold text-end">Anno</div>
-							  <div class="col-8"><input type="text" class="form-control"></div>
-							</div>
+                            <div class="row mb-2">
+                              <div class="col-4 fw-bold text-end">Anno</div>
+                              <div class="col-8"><input type="text" class="form-control"></div>
+                            </div>
 
-							<div class="row mb-2">
-							  <div class="col-4 fw-bold text-end">Genere</div>
-							  <div class="col-8"><input type="text" class="form-control"></div>
-							</div>
+                            <div class="row mb-2">
+                              <div class="col-4 fw-bold text-end">Genere</div>
+                              <div class="col-8"><input type="text" class="form-control"></div>
+                            </div>
 
-							<div class="row mb-2">
-							  <div class="col-4 fw-bold text-end">Pagine</div>
-							  <div class="col-8"><input type="text" class="form-control"></div>
-							</div>
+                            <div class="row mb-2">
+                              <div class="col-4 fw-bold text-end">Pagine</div>
+                              <div class="col-8"><input type="text" class="form-control"></div>
+                            </div>
 
-							<div class="row mb-2">
-							  <div class="col-4 fw-bold text-end">Copie Vendute</div>
-							  <div class="col-8"><input type="text" class="form-control"></div>
-							</div>
+                            <div class="row mb-2">
+                              <div class="col-4 fw-bold text-end">Copie Vendute</div>
+                              <div class="col-8"><input type="text" class="form-control"></div>
+                            </div>
 
-							<div class="row mb-2">
-							  <div class="col-4 fw-bold text-end">Copertina</div>
-							  <div class="col-8"><input type="text" class="form-control"></div>
-							</div>
-						</div>
-					</div>                    
+                            <div class="row mb-2">
+                              <div class="col-4 fw-bold text-end">Copertina</div>
+                              <div class="col-8"><input type="text" class="form-control"></div>
+                            </div>
+                        </div>
+                    </div>                    
                 </div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Chiudi</button>
-					<button type="button" class="btn btn-success">Salva</button>
-				</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="button" class="btn btn-success" onclick="saveBook()">Salva</button>
+                </div>
             </div>
         </div>
     </div>
 
-    
+   
     <!-- Barra di navigazione -->
-	<header>
+    <header>
         <nav class="navbar bg-primary navbar-dark navbar-expand-md  px-2 fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-					<i class="bi bi-journals  me-2"></i>
-					Book Library
-				</a>
-				<!-- Burger Button che compare quando si restringe la pagina -->
+                    <i class="bi bi-journals  me-2"></i>
+                    Book Library
+                </a>
+                <!-- Burger Button che compare quando si restringe la pagina -->
                 <button class="navbar-toggler" data-bs-toggle="collapse"
                     data-bs-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
-                </button>				
-				<!-- buttons -->
+                </button>              
+                <!-- buttons -->
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                             <button class="btn btn-primary" style="font-size:12pt;">New Book</button>
+                             <button class="btn btn-primary" style="font-size:12pt;" onclick="showModalNew()">New Book</button>
                         </li>
                         <li class="nav-item dropdown">
                             <button class="btn btn-primary nav-link dropdown-toggle text-white" style="font-size:13pt; padding-top:5.1px;" href="#"  data-bs-toggle="dropdown">
@@ -133,9 +133,9 @@
                         </li>
                     </ul>
 
-					<!-- 2° contenitore automaticamente allineato a destra -->
+                    <!-- 2° contenitore automaticamente allineato a destra -->
                     <div>
-						<!-- icona di login -->
+                        <!-- icona di login -->
                         <i class="bi bi-person-circle fs-4 text-light" id="btnLogin"></i>
                     </div>
                 </div>
@@ -144,19 +144,19 @@
     </header>
 
     <main class="container-fluid" style="padding-top:56px;">
-	    <!-- LOGIN alert -->
+        <!-- LOGIN alert -->
         <div class="alert alert-danger d-none alert-dismissible my-2 text-center" id="alert-login">
-            <i class="bi bi-exclamation-triangle"></i> 
-			Login fallito. Riprova più tardi.
-			<button type="button" class="btn-close"></button>
+            <i class="bi bi-exclamation-triangle"></i>
+            Login fallito. Riprova più tardi.
+            <button type="button" class="btn btn-close"></button>
         </div>
-		
+       
         <div class="row">
             <h1 class="text-center py-5" style="font-size:3rem;">Biblioteca Fossanese</h1>
         </div>
-		
+       
         <!-- Tabella principale-->
-		<div class="row px-2">
+        <div class="row px-2">
             <table class="table" id="film-table">
                 <thead>
                     <tr>
@@ -165,8 +165,8 @@
                         <th width="22%">Autore</th>
                         <th width="15%">Genere</th>
                         <th width="15%">CopieVendute</th>
-						<th width="5%"> <!-- lente --> </th>
-						<th width="5%"> <!-- cestino --> </th>
+                        <th width="5%"> <!-- lente --> </th>
+                        <th width="5%"> <!-- cestino --> </th>
                     </tr>
                 </thead>
                 <tbody></tbody>
