@@ -17,7 +17,7 @@
 		<div class="headerBtn"> Salva su Disco </div>
 	</header>
 
-    <main id="container">	
+    <main id="container">
         <h1>Book Store</h1>
 		
 		<div id="list-view"> 
@@ -55,7 +55,29 @@
 
 
 		<div id="add-view"> 
-			<div class="details"> </div>
+			<div class="details"> 
+			    <label> Id : </label>
+				<input type="number" id="txtId">
+				
+			    <label> Titolo : </label>
+				<input type="text" id="txtTitolo">
+				
+			    <label> Categoria : </label>
+				<input type="text" id="txtCategoria">
+				
+			    <label> Lingua : </label>
+				<input type="text" id="txtLingua">
+				
+			    <label> Autori : </label>
+				<input type="text" id="txtAutori">
+				
+			    <label> Anno : </label>
+				<input type="number" id="txtAnno" min="1900" max="">
+				
+			    <label> Prezzo : </label>
+				<input type="number" id="txtPrezzo">
+			</div>
+			
 			<div class="buttons">
 				<button class="button">Add</button>
 			</div>
