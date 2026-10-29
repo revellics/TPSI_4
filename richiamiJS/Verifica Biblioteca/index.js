@@ -15,7 +15,6 @@ for (let genreElement of genreElements) {
     genreElement.addEventListener("click", genreClick)
 }
 
-
 const modalDettagli = new bootstrap.Modal("#modal-details")
 const modalDettagliPointer = document.getElementById("modal-details")
 const modalDettagliBody = modalDettagliPointer.querySelector(".card");
@@ -136,8 +135,6 @@ function showModalDettagli(libro) {
     modalDettagli.show();
 }
 
-
-
 function showModalNew() {
     modalNew.show();
 }
@@ -168,7 +165,5 @@ function deleteBook() {
             biblioteca.splice(i,1);
         }
     })
-
     this.parentElement.parentElement.remove();
-
-}  
+}

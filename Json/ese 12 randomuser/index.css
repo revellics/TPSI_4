@@ -1,0 +1,217 @@
+#optWrapper{
+	width:160px;
+	margin: 20px auto;
+	background-color:#ffa;
+	font-size:18pt;
+	padding:20px;
+	padding-left:40px;
+	font-style:italic;
+	font-weight:bold;
+	border-radius:15px;
+	border:1px solid blue;
+}
+
+/* ******** table ******** */
+table{
+	width:700px;
+	background-color:#ddd;
+	margin: 20px auto;
+	padding:10px;
+	border-radius:15px;
+	border:1px solid blue;
+}
+
+table tr{
+	height:36px;
+}
+
+table td{
+	text-align:center;
+}
+
+table td:nth-of-type(5), table td:nth-of-type(6) {
+	cursor:pointer;
+}
+
+.icon{
+	
+}
+
+/* ********* details & navButtons ********* */
+#detailsContainer{
+	width:680px;
+	background-color:#ddd;
+	margin: 20px auto;
+	padding:10px;
+	border-radius:15px;
+	border:1px solid blue;
+}
+
+#details{
+	width:420px;
+	margin: 20px auto;
+	padding:10px;
+	text-align:center;
+	height:220px;
+	background-color:#fff;
+	border-radius:15px;
+	border:1px solid blue;
+}
+
+#navButtons{
+	width:420px;
+	margin: 20px auto;
+	padding: 10px;
+	background-color:#ffa;
+	border-radius:15px;
+	border:1px solid blue;
+	overflow:auto;
+}
+
+#navButtons input, #utilityButtons input{
+	display : block;
+	float:left;
+	width:80px;
+	margin:5px;
+	padding:10px;
+	text-align:center;
+	font-weight: 600;
+	border-radius:5px;
+}
+
+#navButtons p{
+	float:left;
+	width:25px;
+	margin:5px;
+	padding:10px;
+	text-align:center;
+	font-weight: 600;
+}
+
+/* da aggiungere direttamente a TD */
+.icon{
+	background-repeat:no-repeat;
+	background-size:contain;
+	padding:5px;	
+	background-origin:content-box;
+
+}
+.lente{
+	background-image:url('img/lente.jpg');
+}
+.cestino{
+	background-image:url('img/delete.png');
+}
+
+
+/* ********* utility Buttons ********* */
+#utilityButtons{
+	width:170px;
+	margin: 20px;
+	padding: 10px;
+	background-color:#ffa;
+	border-radius:15px;
+	border:1px solid blue;
+	overflow:auto;
+	position:absolute;
+	top:10px;
+	left:10px;
+}
+
+#utilityButtons input:nth-of-type(1){
+	width:160px;
+}
+
+/* ********* add new ********* */
+dialog {
+  border: none;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* pseudo elemento */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5); /* Sfondo nero semi-trasparente */
+  backdrop-filter: blur(4px);           /* sfoca la pagina dietro */
+}
+
+#addNewModal h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #1a1a1a;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align:center;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #555555;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #333333;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #4f46e5;  
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: none;
+}
+
+/* Pulsante Annulla */
+.btn-secondary {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+}
+
+/* Pulsante Salva */
+.btn-primary {
+  background-color: #4f46e5;
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background-color: #4338ca;
+}
