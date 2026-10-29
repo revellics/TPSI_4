@@ -1,4 +1,4 @@
-let people = `[
+let datiIniziali = `[
       {
          "gender":"male",
          "name":{
@@ -1406,3 +1406,5 @@ let people = `[
          "nat":"FR"
       }
 ]`
+
+//https://11.buytourismonline.com/wp-content/uploads/2019/02/speaker_1057517-230x230.png

@@ -29,14 +29,6 @@ table td{
 	text-align:center;
 }
 
-table td:nth-of-type(5), table td:nth-of-type(6) {
-	cursor:pointer;
-}
-
-.icon{
-	
-}
-
 /* ********* details & navButtons ********* */
 #detailsContainer{
 	width:680px;
@@ -90,16 +82,16 @@ table td:nth-of-type(5), table td:nth-of-type(6) {
 
 /* da aggiungere direttamente a TD */
 .icon{
+	padding:5px;	
 	background-repeat:no-repeat;
 	background-size:contain;
-	padding:5px;	
 	background-origin:content-box;
 
 }
-.lente{
+.lens{
 	background-image:url('img/lente.jpg');
 }
-.cestino{
+.trash{
 	background-image:url('img/delete.png');
 }
 
