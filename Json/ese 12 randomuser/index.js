@@ -4,13 +4,16 @@ const opts = document.querySelectorAll("#optWrapper input")
 const table = document.querySelector(".list")
 const tbody = table.querySelector("tbody")
 // details
+const detailsContainer = document.getElementById("detailsContainer")
 const details = document.getElementById("details")
 const navBtns = document.querySelectorAll("#navButtons input")
 const navLabel = document.getElementById("navLabel")
 // utility buttons
 const utilityBtns = document.querySelectorAll("#utilityButtons input")
 // addNew
-const modal = document.getElementById('addNewModal');
+const modal = document.getElementById("addNewModal")
+const btnAnnulla = document.getElementById("btnAnnulla")
+const btnSalva = document.getElementById("btnSalva")
 
 // Events
 opts[0].addEventListener("click", displayData)
@@ -22,30 +25,33 @@ navBtns.forEach(function (btn) {
 utilityBtns[0].addEventListener("click", eliminaPerNazione)
 utilityBtns[1].addEventListener("click", ordina)
 utilityBtns[2].addEventListener("click", salva)
-utilityBtns[3].addEventListener("click", addNew)
-
+utilityBtns[3].addEventListener("click", function () {
+    modal.showModal()
+})
+btnAnnulla.addEventListener("click", function () {
+    modal.close()
+})
+btnSalva.addEventListener("click", addNew)
 
 //dati filtrati
-let filteredData
+let filteredData = []
 let currentIndex = 0
 
 // Avvio
-let people = loadData(); //people è un vettore enumerativo di JSON (si usa JSON.parse perchè è un elemento valido)
+let people = loadData() // people è un vettore di oggetti (JSON.parse della stringa)
 displayData()
 
 function loadData() {
-    let peopleString = localStorage.getItem("people");
+    let peopleString = localStorage.getItem("people")
     if (!peopleString)
-        peopleString = peopleStorage
+        peopleString = datiIniziali // variabile definita in data/people.js
     return JSON.parse(peopleString)
 }
-
 
 function displayData() {
     tbody.innerHTML = ""
 
-    // const gender = opts.querySelector(":checked").value - NOK
-    const gender = document.querySelector(":checked").value
+    const gender = document.querySelector('input[name="gender"]:checked').value
     getFilteredData(gender)
     filteredData.forEach(function (person, i) {
         let tr = document.createElement("tr")
@@ -71,7 +77,7 @@ function displayData() {
         td.classList.add("icon", "lens")
         td.addEventListener("click", function () {
             currentIndex = i
-            showDetails(person, currentIndex)
+            showDetails()
         })
         tr.append(td)
 
@@ -81,8 +87,7 @@ function displayData() {
             deletePerson(person)
         })
         tr.append(td)
-
-    });
+    })
 
     detailsContainer.style.display = "none"
 }
@@ -90,11 +95,17 @@ function displayData() {
 function getName(personName) {
     return personName.first + " " + personName.last
 }
+
 function getNameSort(personName) {
-    return personName.Last + " " + personName.First
+    return personName.last + " " + personName.first
 }
 
-function showDetails(person, currentIndex) {
+// mostra i dettagli della persona filtrata in posizione currentIndex
+function showDetails() {
+    const person = filteredData[currentIndex]
+    if (!person)
+        return
+
     detailsContainer.style.display = ""
     details.innerHTML = ""
 
@@ -108,21 +119,21 @@ function showDetails(person, currentIndex) {
     details.append(img)
 
     p = document.createElement("p")
-    p.textContent = person.cell
+    p.textContent = person.phone
     details.append(p)
 
     navLabel.textContent = `${currentIndex + 1}/${filteredData.length}`
 }
 
 function getFilteredData(gender) {
-    filteredData = []
-    people.forEach(function (person) {
-        if (person.gender == gender)
-            filteredData.push(person)
-    });
+    filteredData = people.filter(function (person) {
+        return person.gender == gender
+    })
 }
 
 function naviga() {
+    if (filteredData.length == 0)
+        return
     switch (this.value) {
         case "Primo":
             currentIndex = 0
@@ -139,7 +150,7 @@ function naviga() {
             currentIndex = filteredData.length - 1
             break
     }
-    showDetails(filteredData[currentIndex])
+    showDetails()
 }
 
 function deletePerson(person) {
@@ -149,88 +160,104 @@ function deletePerson(person) {
     displayData()
 }
 
+function eliminaPerNazione() {
+    const risposta = prompt("Inserire una nazione:")
+    if (risposta === null || risposta.trim() == "")
+        return // prompt annullato o vuoto
+    const nazione = risposta.trim().toUpperCase()
 
-function eliminaPerNazione(e) {
-    const nazione = prompt("inserire una nazione:").toUpperCase()
-    let l1 = people.length;
+    let l1 = people.length
     people = people.filter(function (item) {
-        return item.nat != nazione;
+        return item.nat.toUpperCase() != nazione
     })
-    let l2 = people.length;
+    let l2 = people.length
+
     if (l1 == l2)
-        alert("non ci sono nazioni appartenenzi a " + nazione)
+        alert("Non ci sono persone appartenenti a " + nazione)
     else {
-        alert(`eliminate correttamente ${l1 - l2} persone`);
+        alert(`Eliminate correttamente ${l1 - l2} persone`)
         displayData()
-    }
-    if (people.length == 0){
-        utilityBtns[0].disabled = true
     }
 }
 
 function addNew() {
+    const txtFirst = document.getElementById("txtFirst")
+    const txtLast = document.getElementById("txtLast")
+    const txtCity = document.getElementById("txtCity")
+    const txtState = document.getElementById("txtState")
+    const txtNat = document.getElementById("txtNat")
+    const txtGender = document.getElementById("txtGender")
+    const txtEmail = document.getElementById("txtEmail")
+    const txtPhone = document.getElementById("txtPhone")
+
     let inputData = Array.from(modal.getElementsByTagName("input"))
     for (const input of inputData) {
-        if(input.value.trim() == "")
-            alert("Dati incompleti"); return
+        if (input.value.trim() == "") {
+            alert("Dati incompleti")
+            return
+        }
     }
     //controllo correttezza male/female
-    if(txtGender.value != "male" && txtGender.value != "female")
-        alert("Controllare il gender"); return
+    const gender = txtGender.value.trim().toLowerCase()
+    if (gender != "male" && gender != "female") {
+        alert("Controllare il gender (male / female)")
+        return
+    }
     //salvataggio
     let person = {
-        "gender": txtGender.value,
-         "name":{
-            "title": txtGender.value == "male" ? "mr" : "miss",
-            "first": txtFirst.value,
-            "last": txtLast.value
-         },
-         "location":{
-            "street":"",
-            "city": txtCity,
-            "state": txtState,
+        "gender": gender,
+        "name": {
+            "title": gender == "male" ? "mr" : "miss",
+            "first": txtFirst.value.trim().toLowerCase(),
+            "last": txtLast.value.trim().toLowerCase()
+        },
+        "location": {
+            "street": "",
+            "city": txtCity.value.trim().toLowerCase(),
+            "state": txtState.value.trim().toLowerCase(),
             "postcode": 0
-         },
-         "email": txtEmail.value,
-         "login":{
-            "username":"",
-            "password":"",
-            "salt":"",
-            "md5":"",
-            "sha1":"",
-            "sha256":""
-         },
-         "dob":"",
-         "registered":"",
-         "phone": txtPhone.value,
-         "cell":txtPhone.value,
-         "id":{
-            "name":"",
-            "value":null
-         },
-         "picture":{
-            "large":"https://11.buytourismonline.com/wp-content/uploads/2019/02/speaker_1057517-230x230.png",
-            "medium":"https://11.buytourismonline.com/wp-content/uploads/2019/02/speaker_1057517-230x230.png",
-            "thumbnail":"https://11.buytourismonline.com/wp-content/uploads/2019/02/speaker_1057517-230x230.png"
-         },
-         "nat": txtNat.value
+        },
+        "email": txtEmail.value.trim(),
+        "login": {
+            "username": "",
+            "password": "",
+            "salt": "",
+            "md5": "",
+            "sha1": "",
+            "sha256": ""
+        },
+        "dob": "",
+        "registered": "",
+        "phone": txtPhone.value.trim(),
+        "cell": txtPhone.value.trim(),
+        "id": {
+            "name": "",
+            "value": null
+        },
+        "picture": {
+            "large": "https://11.buytourismonline.com/wp-content/uploads/2019/02/speaker_1057517-230x230.png",
+            "medium": "https://11.buytourismonline.com/wp-content/uploads/2019/02/speaker_1057517-230x230.png",
+            "thumbnail": "https://11.buytourismonline.com/wp-content/uploads/2019/02/speaker_1057517-230x230.png"
+        },
+        "nat": txtNat.value.trim().toUpperCase()
     }
     people.push(person)
     salva()
     displayData()
     for (const input of inputData) {
-        input.value == ""
+        input.value = ""
     }
+    modal.close()
 }
 
 function salva() {
-    let data = JSON.stringify(people)
-    localStorage.people = data
+    localStorage.setItem("people", JSON.stringify(people))
     alert("Dati salvati correttamente")
 }
+
 let aZ = true
 function ordina() {
-    people.sort((item1, item2) =>{
+    people.sort((item1, item2) => {
         let n1 = getNameSort(item1.name)
         let n2 = getNameSort(item2.name)
         return aZ ? n1.localeCompare(n2) : n2.localeCompare(n1)
