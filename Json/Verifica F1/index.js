@@ -1,6 +1,7 @@
 "use strict";
 
 const tbody = document.getElementsByTagName("tbody")[0]
+const btnTutti = divPiloti.querySelector("button")
 
 let scuderie
 
@@ -81,9 +82,41 @@ function creaTabella(...params) {
             let span = document.createElement("span")
             span.textContent = item
             td.append(span)
+            span.addEventListener("click", function(){
+                visualizzaDettagli(params[1], params[3])
+            })
         } else {
             td.textContent = item
         }
         tr.append(td)
     })
+}
+
+btnTutti.addEventListener("click", function(){
+    lstScuderie.selectedIndex = -1
+    const chks = nazioni.querySelectorAll("input[type=checkbox]:checked")
+    for (const chk of chks) {
+        chk.checked = false
+    }
+    caricaPiloti()
+})
+
+function visualizzaDettagli(nomePilota, nomeScuderia){
+    const scuderia = scuderie[nomeScuderia]
+    const pilota = scuderia.piloti.find(function(pilota){
+        return pilota.nome==nomePilota
+    })
+    divDettagli.innerHTML = ""
+
+    const img = document.createElement("img")
+    divDettagli.append(img)
+    img.src=`./img/${pilota.nome}.jpg`
+    img.onerror = img.src = "./img/user.png"
+    
+    const div = document.createElement("div")
+    divDettagli.append(div)
+    
+    const p = document.createElement("p")
+    div.append(p)
+    p.innerHTML = `<b>${pilota.numero} - ${pilota.nome}</b>`
 }
